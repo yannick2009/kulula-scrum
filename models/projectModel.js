@@ -4,12 +4,12 @@ const projectSchema = new mongoose.Schema(
     {
         nom: String,
         description: String,
-        backlog: [
-            {
-                type: mongoose.SchemaTypes.ObjectId,
-                ref: 'UserStory',
-            },
-        ],
+        // backlog: [
+        //     {
+        //         type: mongoose.SchemaTypes.ObjectId,
+        //         ref: 'UserStory',
+        //     },
+        // ],
         user: {
             type: mongoose.SchemaTypes.ObjectId,
             ref: 'Users',
@@ -24,6 +24,12 @@ const projectSchema = new mongoose.Schema(
         toObject: { virtuals: true },
     }
 );
+
+projectSchema.virtual('backlog', {
+    ref: 'UserStory',
+    localField: '_id',
+    foreignField: 'project',
+});
 
 const Project = mongoose.model('Project', projectSchema);
 

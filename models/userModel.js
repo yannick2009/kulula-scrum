@@ -47,12 +47,6 @@ const userSchema = new mongoose.Schema(
             type: Date,
             default: Date.now(),
         },
-        // projectList: [
-        //     {
-        //         type: mongoose.Schema.ObjectId,
-        //         ref: 'Project',
-        //     },
-        // ],
     },
     {
         toJSON: { virtuals: true },
